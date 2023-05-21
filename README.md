@@ -33,10 +33,9 @@ public class BST<K extends Comparable<K>, V> implements Iterable<K> {
             return new Node(key, value);
         }
 
-        int cmp = key.compareTo(node.key);
-        if (cmp < 0) {
+        if (key.compareTo(node.key) < 0) {
             node.left = put(node.left, key, value); // Insert into the left subtree
-        } else if (cmp > 0) {
+        } else if (key.compareTo(node.key) > 0) {
             node.right = put(node.right, key, value); // Insert into the right subtree
         } else {
             node.value = value; // Update existing node's value
@@ -56,15 +55,15 @@ public class BST<K extends Comparable<K>, V> implements Iterable<K> {
             return null; // Key not found
         }
 
-        int cmp = key.compareTo(node.key);
-        if (cmp < 0) {
+        if (key.compareTo(node.key) < 0) {
             return get(node.left, key); // Search in the left subtree
-        } else if (cmp > 0) {
+        } else if (key.compareTo(node.key) > 0) {
             return get(node.right, key); // Search in the right subtree
         } else {
             return node; // Key found
         }
     }
+
 
     // Deletes a node with a given key from the binary search tree
     public void delete(K key) {
@@ -77,10 +76,9 @@ public class BST<K extends Comparable<K>, V> implements Iterable<K> {
             return null; // Key not found
         }
 
-        int cmp = key.compareTo(node.key);
-        if (cmp < 0) {
+        if (key.compareTo(node.key) < 0) {
             node.left = delete(node.left, key); // Delete from the left subtree
-        } else if (cmp > 0) {
+        } else if (key.compareTo(node.key) > 0) {
             node.right = delete(node.right, key); // Delete from the right subtree
         } else {
             size--;
